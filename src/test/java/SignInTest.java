@@ -1,4 +1,5 @@
 import base.TestBase;
+import helpers.Creds;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
@@ -11,9 +12,6 @@ import ru.yandex.qatools.allure.annotations.TestCaseId;
 
 public class SignInTest extends TestBase {
 
-    private static final String USERNAME = "";
-    private static final String PASSWORD = "";
-
     @Test(groups = {"smoke"})
     @Features("Sign in")
     @Stories("Verify ability to make a simple login to PandaDoc application")
@@ -21,7 +19,7 @@ public class SignInTest extends TestBase {
     public void simpleSignInTest() {
         HomePage.clickLoginButton();
         LoginPage.titleShouldAppear();
-        LoginPage.login(USERNAME, PASSWORD);
+        LoginPage.login(Creds.username, Creds.password);
         DashboardPage.titleShouldAppear();
 
         boolean dashboardPageAppeared = DashboardPage.avatarIsVisible();
